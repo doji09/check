@@ -1,0 +1,99 @@
+/*
+Color Palette:
+background: #D9E0E2
+Main Font: #1F222B
+answer options/boxes: #F4F3F3
+secondary: #A4BCC4
+*/
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #D9E0E2;
+	font-family: 'Montserrat', sans-serif;
+}
+h1{
+	padding:10px;
+	text-transform:uppercase;
+	font-weight:700;
+}
+h2,h3{
+	padding:10px;
+}
+h2{
+	text-align:center;
+}
+hr{
+	height:1px;	
+	background-color:#000000;
+}
+a{
+cursor:pointer;	
+text-decoration:none;
+color:#000000;
+}
+/*----------menu---------*/
+.nav{
+height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #A4BCC4;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top:40px;
+  width:0;
+}
+.btn{
+	display:block;
+	font-size:20px;
+	width:100%;
+	text-align:left;
+	padding:15px 50px 15px 15px;
+	transition:0.5s ease-in-out;
+}
+.btn:hover{
+	background-color:#F4F3F3;
+}
+#close{
+	position:absolute;
+	top:8px;
+	right:8px;
+	font-size:30px;
+}
+
+/*----------top---------*/
+.info{
+	width:90%;
+	margin:0 auto;
+	position:relative;
+}
+#open{
+	position:absolute;
+	font-size:30px;
+	top:10px;
+	right:10px;
+}
+
+
+/* SYMPTOMS TABLE */
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+  margin: 0 auto;
+  font: inherit;
+}
+
+td, th {
+  border: 2px solid #A4BCC4;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: white;
+}

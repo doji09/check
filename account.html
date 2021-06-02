@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<!--meta tags-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--styling-->
+		<link rel="stylesheet" href="account.css">
+		<!--font link-->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+		<script type="module" src="script.js"></script>
+	</head>
+
+	<body>
+		<!--<div>Your name {{name}}</div>
+		<div>Your email is {{username}}</div>
+		<div>Your age is {{#account.data}}
+				<div>{{age}}</div>
+			{{/account.data}}</div>
+		<div>Symptoms: {{#account.data}}
+				<div>{{symptom}}</div>
+			{{/account.data}}</div>
+		<div>Your latest top 5 conditions are:<div>{{conditions}}</div>
+		</div>-->
+		<div class="info">
+			<h1>Welcome {{name}}</h1>
+			<h3>{{username}}</h3>
+			<hr />
+			<a onclick="openNav()" id="open">&#9776;</a>
+		</div>
+		<div class="latest">
+			<h2>Recent Results</h2>
+			<table>
+				<tr>
+					<th>Date</th>
+					<th>Age</th>
+					<th>Symptoms</th>
+					<th>Results</th>
+				</tr>
+				<tr>
+					<td>{{#account.data}}
+							<div class="date-list">{{date}}</div>
+						{{/account.data}}</td>
+					<td>{{#account.data}}
+							<div class="age-list">{{age}}</div>
+						{{/account.data}}
+					</td>
+					<td>
+						<div class="sy" id="symptoms-display">{{#account.data}}
+								<div class="symptoms-list">{{symptom}}</div>
+						</div>
+						{{/account.data}}
+					</td>
+					<td>
+						<div id="conditions-display"> {{#account.results}}
+								<div class="conditions-list">{{condition}}</div>
+							{{/account.results}}</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="past">
+			<h2>Past Results</h2>
+			<table id="past-table">
+				<tr>
+					<th>Date</th>
+					<th>Age</th>
+					<th>Symptoms</th>
+					<th>Results</th>
+				</tr>
+				<!--<tr>
+					<td>{{#account.data}}
+							<div>{{date}}</div>
+						{{/account.data}}</td>
+					<td>{{#account.data}}
+							<div>{{age}}</div>
+						{{/account.data}}
+					</td>
+					<td>
+						<div class="sy">{{#account.data}}
+								<div>{{symptom}}</div>
+						</div>
+						{{/account.data}}
+					</td>
+					<td>{{#account.results}}
+							<div>{{condition}}</div>
+						{{/account.results}}
+					</td>
+				</tr>-->
+			</table>
+		</div>
+		<div class="nav" id="nav">
+			<a id="close" href="javascript:void(0)" onclick="closeNav()">&times;</a>
+			<a class="btn" onclick='logout()'>Log Out</a>
+			<a class="btn" onclick="window.location.href='/~/spring2021/cranial-check/quiz'">Take Quiz</a>
+		</div>
+		<script src="account.js"></script>
+	</body>
+
+</html>

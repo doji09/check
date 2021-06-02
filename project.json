@@ -1,0 +1,6 @@
+{
+	"homepage": "index.html"
+		, "apis": [
+		["/db/data", "GET", "PERSONAL"]
+	]
+}
