@@ -1,3 +1,24 @@
+// SEARCH BAR
+function searchResults() {
+	let input, filter, table, tr, td, i, txtValue;
+	input = document.getElementById("search-results");
+	filter = input.value.toUpperCase();
+	table = document.getElementById("past-table");
+	tr = table.getElementsByTagName("tr");
+	for (i = 0; i < tr.length; i++) {
+		td = tr[i].getElementsByTagName("td")[0];
+		if (td) {
+			txtValue = td.textContent || td.innerText;
+			if (txtValue.toUpperCase()
+				.indexOf(filter) > -1) {
+				tr[i].style.display = "";
+			} else {
+				tr[i].style.display = "none";
+			}
+		}
+	}
+}
+
 //don't use open() --> existing JS function that loads new page
 function openNav() {
 	document.getElementById("nav")
@@ -9,17 +30,17 @@ function closeNav() {
 		.style.width = "0";
 }
 
-
 // ------------- Looping through date, age, symptoms ------------- //
 var dateList = document.getElementsByClassName("date-list");
 var ageList = document.getElementsByClassName("age-list");
 var symptomsList = document.getElementsByClassName("symptoms-list");
 var conditionsList = document.getElementsByClassName("conditions-list");
+console.log(conditionsList[18]);
 
 // ------------------------------------------------------------- //
 //-------------------PAST SYMPTOMS/RESULTS---------------------- //
 // ------------------------------------------------------------- //
-var table = document.getElementById("past-table");
+var tbody = document.getElementById("tbody");
 
 function past_symptoms_list(pastSymptoms) {
 	var list = document.createElement("ul");
@@ -49,7 +70,7 @@ for (var i = symptomsList.length - 2; i >= 0; i--) {
 	var td_age = document.createElement("td");
 	var td_symptom = document.createElement("td");
 	var td_condition = document.createElement("td");
-	
+
 	td_date.innerHTML = dateList[i].textContent;
 	td_age.innerHTML = ageList[i].textContent;
 
@@ -58,12 +79,12 @@ for (var i = symptomsList.length - 2; i >= 0; i--) {
 
 	td_symptom.appendChild(li_symptoms);
 	td_condition.appendChild(li_conditions);
-	
+
 	tr.appendChild(td_date);
 	tr.appendChild(td_age);
 	tr.appendChild(td_symptom);
 	tr.appendChild(td_condition);
-	table.appendChild(tr);
+	tbody.appendChild(tr);
 }
 
 // ------------------------------------------------------------- //
@@ -82,7 +103,7 @@ if (symptomsList.length > 1) {
 var symptoms = symptomsList[0].textContent;
 var symptoms_array = symptoms.split(",");
 var displaySymptoms = document.getElementById("symptoms-display");
-console.log(symptoms_array);
+//console.log(symptoms_array);
 //creating unordered list
 var list = document.createElement("ul");
 for (var i = 0; i < symptoms_array.length; i++) {
@@ -103,6 +124,7 @@ if (conditionsList.length > 1) {
 	}
 }
 var conditions = conditionsList[0].textContent;
+console.log(conditions);
 var conditions_array = conditions.split(",");
 var displayConditions = document.getElementById("conditions-display");
 //creating ordered list

@@ -14,87 +14,76 @@
 	</head>
 
 	<body>
-		<!--<div>Your name {{name}}</div>
-		<div>Your email is {{username}}</div>
-		<div>Your age is {{#account.data}}
-				<div>{{age}}</div>
-			{{/account.data}}</div>
-		<div>Symptoms: {{#account.data}}
-				<div>{{symptom}}</div>
-			{{/account.data}}</div>
-		<div>Your latest top 5 conditions are:<div>{{conditions}}</div>
-		</div>-->
-		<div class="info">
-			<h1>Welcome {{name}}</h1>
-			<h3>{{username}}</h3>
-			<hr />
+		<div class="about-info" style="display: flex;">
+			<div style="margin: auto 10px;"><img src="https://www.carissatang.com/spring2021/cranial-check/assets/patient.png" style="width: 80px;"></div>
+			<div>
+				<h1>Welcome... {{name}}</h1>
+				<h3>{{username}}</h3>
+			</div>
 			<a onclick="openNav()" id="open">&#9776;</a>
 		</div>
-		<div class="latest">
+		<div class="table-search">
 			<h2>Recent Results</h2>
+		</div>
+		<div class="latest">
 			<table>
-				<tr>
-					<th>Date</th>
-					<th>Age</th>
-					<th>Symptoms</th>
-					<th>Results</th>
-				</tr>
-				<tr>
-					<td>{{#account.data}}
-							<div class="date-list">{{date}}</div>
-						{{/account.data}}</td>
-					<td>{{#account.data}}
-							<div class="age-list">{{age}}</div>
-						{{/account.data}}
-					</td>
-					<td>
-						<div class="sy" id="symptoms-display">{{#account.data}}
-								<div class="symptoms-list">{{symptom}}</div>
-						</div>
-						{{/account.data}}
-					</td>
-					<td>
-						<div id="conditions-display"> {{#account.results}}
-								<div class="conditions-list">{{condition}}</div>
-							{{/account.results}}</div>
-					</td>
-				</tr>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Age</th>
+						<th>Symptoms</th>
+						<th>Results</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{#account.data}}
+								<div class="date-list">{{date}}</div>
+							{{/account.data}}</td>
+						<td>{{#account.data}}
+								<div class="age-list">{{age}}</div>
+							{{/account.data}}
+						</td>
+						<td>
+							<div class="sy" id="symptoms-display">{{#account.data}}
+									<div class="symptoms-list">{{symptom}}</div>
+							</div>
+							{{/account.data}}
+						</td>
+						<td>
+							<div id="conditions-display"> {{#account.results}}
+									<div class="conditions-list">{{condition}}</div>
+								{{/account.results}}</div>
+						</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
-		<div class="past">
+
+		<div class="table-search">
 			<h2>Past Results</h2>
+			<input type="text" id="search-results" onkeyup="searchResults()" placeholder="Type to search..." title="Type in a name">
+		</div>
+		<div class="past scroll">
 			<table id="past-table">
-				<tr>
-					<th>Date</th>
-					<th>Age</th>
-					<th>Symptoms</th>
-					<th>Results</th>
-				</tr>
-				<!--<tr>
-					<td>{{#account.data}}
-							<div>{{date}}</div>
-						{{/account.data}}</td>
-					<td>{{#account.data}}
-							<div>{{age}}</div>
-						{{/account.data}}
-					</td>
-					<td>
-						<div class="sy">{{#account.data}}
-								<div>{{symptom}}</div>
-						</div>
-						{{/account.data}}
-					</td>
-					<td>{{#account.results}}
-							<div>{{condition}}</div>
-						{{/account.results}}
-					</td>
-				</tr>-->
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Age</th>
+						<th>Symptoms</th>
+						<th>Results</th>
+					</tr>
+				</thead>
+				<tbody id="tbody"></tbody>
 			</table>
 		</div>
+		<a href="/~/spring2021/cranial-check/glossary" target="_blank" class="view-results">What do my results mean?</a>
+
 		<div class="nav" id="nav">
 			<a id="close" href="javascript:void(0)" onclick="closeNav()">&times;</a>
 			<a class="btn" onclick='logout()'>Log Out</a>
 			<a class="btn" onclick="window.location.href='/~/spring2021/cranial-check/quiz'">Take Quiz</a>
+			<a class="btn" onclick="window.location.href='/~/spring2021/cranial-check/glossary'">Visit Glossary</a>
 		</div>
 		<script src="account.js"></script>
 	</body>
