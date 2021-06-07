@@ -12,7 +12,7 @@ setVisible('.outer-page', false);
 setVisible('#loading', true);
 
 document.addEventListener('DOMContentLoaded', () =>
-  wait(10000).then(() => {
+  wait(8000).then(() => {
     setVisible('.outer-page', true);
     setVisible('#loading', false);
   }));
@@ -62,11 +62,8 @@ function check_condition() {
 		//for each index number, loop through the condition symptoms (y will be the index number)
 		//migraine
 		for (y in migraine_symptoms) {
-			//console.log(symptoms_array[x], migraine_symptoms[y]);
 			//if the two symptoms match, it will call the corresponding function with the parameter being the index number that matched
 			if (symptoms_array[x] == migraine_symptoms[y]) {
-				//console.log("match")
-				//console.log(y)
 				migraine(y);
 			}
 		}
