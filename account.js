@@ -1,3 +1,12 @@
+//-------------------------------------------------------------------//
+// logout button //
+function logout() {
+	fetch('/~/spring2021/cranial-check/logout', { method: 'POST' })
+	location.href = '/~/spring2021/cranial-check'
+}
+
+//--------------------------FILTERING-------------------------//
+//-------------------------------------------------------------------//
 // SEARCH BAR
 function searchResults() {
 	let input, filter, table, tr, td, i, txtValue;
@@ -6,7 +15,7 @@ function searchResults() {
 	table = document.getElementById("past-table");
 	tr = table.getElementsByTagName("tr");
 	for (i = 0; i < tr.length; i++) {
-		td = tr[i].getElementsByTagName("td")[0];
+		td = tr[i].getElementsByTagName("td")[2];
 		if (td) {
 			txtValue = td.textContent || td.innerText;
 			if (txtValue.toUpperCase()
@@ -18,7 +27,58 @@ function searchResults() {
 		}
 	}
 }
+//AGE FILTER
+var ageHistory=document.getElementById("age-history");
+//console.log(ageHistory);
 
+//-------------------------------------------------------------------//
+//-----------------------------------GLOSSARY------------------------------//
+//-------------------------------------------------------------------//
+var conditionNames = document.getElementsByClassName("condition-name");
+var items = document.getElementsByClassName("glossary-item");
+var conditionContent = document.getElementsByClassName("glossary-content");
+// SEARCH BAR GLOSSARY
+function searchGlossary() {
+	var input = document.getElementById("search");
+	var filter = input.value.toUpperCase();
+	//var conditionNames=document.getElementsByClassName("condition-name");
+	//var items=document.getElementsByClassName("glossary-item");
+	//whenever a character is entered to the input box, it's filtered through all condition names
+	for (var i = 0; i < conditionNames.length; i++) {
+		//inner text for cross browser
+		var nameText = conditionNames[i].txtContent || conditionNames[i].innerText;
+		if (nameText.toUpperCase()
+			.indexOf(filter) > -1) {
+			items[i].style.display = "";
+			//changing color of displayed conditions and making them bold
+			if (input.value.length > 0) {
+				conditionNames[i].style.fontWeight = "700";
+			} else {
+				conditionNames[i].style.fontWeight = "400";
+			}
+		} else {
+			items[i].style.display = "none";
+		}
+	}
+}
+//GLOSSARY COLLAPSIBLES
+for (var i = 0; i < items.length; i++) {
+	items[i].addEventListener("click", function () {
+		conditionContent = this.children[1];
+		conditionName = this.children[0];
+		if (conditionContent.style.maxHeight) {
+			conditionContent.style.maxHeight = null;
+			conditionName.style.backgroundColor = "#fefefe";
+		} else {
+			conditionContent.style.maxHeight = conditionContent.scrollHeight + "px";
+			conditionName.style.backgroundColor = "#A4BCC4";
+		}
+	});
+}
+//------------------------------------------------------//
+//------------------NAV BAR-----------------------------//
+//------------------------------------------------------//
+//console.log(conditionContent[0].style.maxHeight);
 //don't use open() --> existing JS function that loads new page
 function openNav() {
 	document.getElementById("nav")
@@ -29,7 +89,9 @@ function closeNav() {
 	document.getElementById("nav")
 		.style.width = "0";
 }
-
+//------------------------------------------------------//
+//------------------DISPLAYING TABLE------------------//
+//------------------------------------------------------//
 // ------------- Looping through date, age, symptoms ------------- //
 var dateList = document.getElementsByClassName("date-list");
 var ageList = document.getElementsByClassName("age-list");
@@ -37,6 +99,13 @@ var symptomsList = document.getElementsByClassName("symptoms-list");
 var conditionsList = document.getElementsByClassName("conditions-list");
 console.log(conditionsList[18]);
 
+var ageArray = [];
+for (var i = 0; i < ageList.length; i++) {
+	var age = ageList[i].textContent;
+	ageArray.push(age);	
+}
+
+console.log(ageArray)
 // ------------------------------------------------------------- //
 //-------------------PAST SYMPTOMS/RESULTS---------------------- //
 // ------------------------------------------------------------- //
