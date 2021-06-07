@@ -1,4 +1,10 @@
 //-------------------------------------------------------------------//
+// logout button //
+function logout() {
+	fetch('/~/spring2021/cranial-check/logout', { method: 'POST' })
+	location.href = '/~/spring2021/cranial-check'
+}
+
 //--------------------------FILTERING-------------------------//
 //-------------------------------------------------------------------//
 // SEARCH BAR
