@@ -36,6 +36,7 @@ displaySlides(shownSlide, 0);
 // ---------------------------------- SIGN UP AND LOGIN PAGES ---------------------------------- //
 // --------------------------------------------------------------------------------------------- //
 //signup variables
+
 var signup = document.getElementById("signup");
 var signupbtn = document.getElementById("signupbtn");
 var spansignup = document.getElementById("close-signup");
@@ -92,14 +93,6 @@ window.onclick = function (event) {
 		signup.style.display = "none";
 	}
 };
-// --------------------------------------------------------------------------------------------- //
-// --------------------------------------- ACCOUNT PAGE  --------------------------------------- //
-// --------------------------------------------------------------------------------------------- //
-// logout button //
-function logout() {
-	fetch('/~/spring2021/cranial-check/logout', { method: 'POST' })
-	location.href = '/~/spring2021/cranial-check'
-}
 
 // --------------------------------------------------------------------------------------------- //
 // -------------------------------------- SYMPTOMS PAGES  -------------------------------------- //
@@ -113,45 +106,30 @@ output.innerHTML = slider.value;
 slider.oninput = function () {
 	output.innerHTML = this.value;
 };
+//-------------------Model------------------
 //symptom content divs
+var contentHeaders = document.getElementsByClassName("symptoms-section");
 var contentDivs = document.getElementsByClassName("symptoms-content");
-var clickAreaDivs = document.getElementsByClassName("click-area");
 
-//toggle boxes by clicking area of model
-/*function nothoverSymptomContent(symptomIndex) {
+function changeBoxColor(symptomIndex) {
+	contentHeaders[symptomIndex].style.backgroundColor = "#A4BCC4";
+}
+
+function revertBoxColor(symptomIndex) {
 	var content = contentDivs[symptomIndex];
-	if (content.style.maxHeight) {
-		content.parentElement.style.display = "none";
-		content.style.maxHeight = null;
+	//leave box colored when box is open and symptoms are shown
+	if (content.style.maxHeight == 0) {
+		contentHeaders[symptomIndex].style.backgroundColor = "#fefefe";
 	}
 }
 
-function hoverSymptomContent(symptomIndex) {
-	var content = contentDivs[symptomIndex];
-	if (content.style.maxHeight == false) {
-		content.parentElement.style.display = "inherit";
-		content.style.maxHeight = content.scrollHeight + "px";
-	}
-}*/
-
 function toggleSymptomContent(symptomIndex) {
 	var content = contentDivs[symptomIndex];
-	var clickArea = clickAreaDivs[symptomIndex];
+	var headers = contentHeaders[symptomIndex]
+	//var clickArea = clickAreaDivs[symptomIndex];
 	//in css max height is set to zero, so the content is not displayed => toggle content by toggling the max-height
-	
-	/* if (content.classList.contains("display")) {
-		content.parentElement.style.display = "none";
-		content.style.maxHeight = null;
-		clickArea.onmouseout = function() {nothoverSymptomContent(symptomIndex)};
-		content.classList.remove("display");
-	}
-	else {
-		content.className += " display";
-		clickArea.onmouseout = null;
-	}*/
-	
 	if (content.style.maxHeight) {
-		content.parentElement.style.display = "none";
+		//content.parentElement.style.display = "none";
 		content.style.maxHeight = null;
 	} else {
 		content.style.maxHeight = content.scrollHeight + "px";
@@ -180,8 +158,10 @@ function activeRow() {
 // --------------------------------------------------------------------------------------------- //
 // date hidden input
 function getDate() {
-    var today = new Date().toLocaleString();
-    document.getElementById("date").value = today;
+	var today = new Date()
+		.toLocaleString();
+	document.getElementById("date")
+		.value = today;
 }
 getDate();
 

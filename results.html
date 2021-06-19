@@ -14,14 +14,15 @@
 
 	<body>
 		<div class="outer-page">
-			<div class="page" id="results">
-				<h2>Results</h2>
-				<div>
-					<div>Symptoms: {{#account.data}}
-							<div class="symptoms-list">{{symptom}}</div>
-						{{/account.data}}</div>
-				</div>
-				<!-- <div class="condition">
+			<div class="page">
+				<div id="results">
+					<h2>Results</h2>
+					<div>
+						<div style="display:none;">Symptoms: {{#account.data}}
+								<div class="symptoms-list">{{symptom}}</div>
+							{{/account.data}}</div>
+					</div>
+					<!-- <div class="condition">
 						<button class="collapsible">1. {{Condition 1}}</button>
 						<div class="content">
 							<p>Description</p>
@@ -45,21 +46,40 @@
 							<p>Description</p>
 						</div>
 					</div>-->
-			</div>
-			<form action="/~/spring2021/cranial-check/account/results" method="post">
-				<div id="results-form">
-					<!--
+				</div>
+				<form action="/~/spring2021/cranial-check/account/results" method="post">
+					<div id="results-form">
+						<!--
 					<input type='hidden' name='condition' value='1. {{Condition 1}} '>
 					<input type='hidden' name='condition' value='2. {{Condition 2}} '>
 					<input type='hidden' name='condition' value='3. {{Condition 3}} '>
 					<input type='hidden' name='condition' value='4. {{Condition 4}} '>-->
-				</div>
-				<div class="center">
-					<button onclick="window.location.href='/~/spring2021/cranial-check/quiz'" class="btn-left">Return</button>
-					<button type="submit" class="btn-right" id="save-results">Save Results</button>
-				</div>
-				<input type='hidden' name='redirecturl' value='/~/spring2021/cranial-check/account'>
-			</form>
+					</div>
+					<div class="center">
+						<button onclick="window.location.href='/~/spring2021/cranial-check/quiz'" class="btn-left">Return</button>
+						<button type="submit" class="btn-right" id="save-results">Save Results</button>
+					</div>
+					<input type='hidden' name='redirecturl' value='/~/spring2021/cranial-check/account'>
+				</form>
+			</div>
+		</div>
+		<div id="loading">
+			<h2>Loading your results...</h2>
+			<div class="loading-icon">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<p id="loading-text">DISCLAIMER: These suggestions are sourced from medical resources, articles, and journals. We are no replacement for a medical professional, so we encouage you to contact your primary doctor if your symptoms worsen. If you are in immediate need of medical attention please visit your local emergency room or call 911.</p>
 		</div>
 		<script src="results.js"></script>
 		<script>
