@@ -180,7 +180,6 @@ tr {
 tr:nth-child(odd) {
 	background-color: #E5E5E5;
 }*/
-
 /*----------------------------FILTER------------------------*/
 .filter-items{
 	margin:5px 0 5px 20px;
@@ -188,12 +187,12 @@ tr:nth-child(odd) {
 	overflow: hidden;
 	transition: 0.5s ease-in-out;
 }
-
 .filter {
 	text-align: left;
 	margin: 0 15px 0 0;
 	padding: 10px;
 	background-color: white;
+	
 	box-shadow:0 2px 4px rgba(0,0,0,0.5);
 }
 .filter h2{
@@ -221,6 +220,7 @@ tr:nth-child(odd) {
 .active-option:after {
 	content: "\2212";
 }
+
 
 /*----------------------------GLOSSARY------------------------*/
 .glossary {
