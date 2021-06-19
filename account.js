@@ -20,16 +20,52 @@ function searchResults() {
 			txtValue = td.textContent || td.innerText;
 			if (txtValue.toUpperCase()
 				.indexOf(filter) > -1) {
-				tr[i].style.display = "";
-			} else {
-				tr[i].style.display = "none";
+          tr[i].style.display = "";
+          if (input.value.length > 0) {
+            td.style.fontWeight = "700";
+            td.style.color="#6792a1";
+          } else {
+            td.style.fontWeight = "400";
+            td.style.color="#000000";
+          }
+        }
 			}
 		}
 	}
 }
 //AGE FILTER
-var ageHistory=document.getElementById("age-history");
-//console.log(ageHistory);
+var ageHistory = document.getElementsByClassName("age-history");
+var ageArray = [];
+//loop through all the age entries and append text content to the end of an empty array to get all the ages in one array
+for (var i = 0; i < ageHistory.length; i++) {
+	var age = ageHistory[i].textContent;
+	ageArray.push(age);
+}
+var uniqueList = [];
+for (var i = 0; i < ageArray.length; i++) {
+	//if the array element has not appeared yet in the empty array, the index number will be -1 --> prevent duplicates from being pushed
+	if (uniqueList.indexOf(ageArray[i]) === -1) {
+		uniqueList.push(ageArray[i]);
+	}
+}
+var ageSection = document.getElementById("age-filter")
+for (var i = 0; i < uniqueList.length; i++) {
+	var ageOption = document.createElement("input");
+	ageOption.id = uniqueList[i];
+	ageOption.setAttribute("type", "radio");
+	ageOption.setAttribute("name", "ages");
+	ageOption.value = uniqueList[i];
+	var ageLabel = document.createElement("LABEL");
+	var ageTxt = document.createTextNode(uniqueList[i]);
+	ageLabel.appendChild(ageTxt);
+	var br = document.createElement("br");
+	ageLabel.setAttribute("for", uniqueList[i]);
+	ageSection.appendChild(ageOption);
+	ageSection.appendChild(ageLabel);
+	ageSection.appendChild(br);
+	console.log(ageOption.id);
+	//console.log(uniqueList[i]);
+}
 
 //-------------------------------------------------------------------//
 //-----------------------------------GLOSSARY------------------------------//
@@ -97,7 +133,6 @@ var dateList = document.getElementsByClassName("date-list");
 var ageList = document.getElementsByClassName("age-list");
 var symptomsList = document.getElementsByClassName("symptoms-list");
 var conditionsList = document.getElementsByClassName("conditions-list");
-console.log(conditionsList[18]);
 
 var ageArray = [];
 for (var i = 0; i < ageList.length; i++) {
@@ -193,7 +228,7 @@ if (conditionsList.length > 1) {
 	}
 }
 var conditions = conditionsList[0].textContent;
-console.log(conditions);
+
 var conditions_array = conditions.split(",");
 var displayConditions = document.getElementById("conditions-display");
 //creating ordered list
