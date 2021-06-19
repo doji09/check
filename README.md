@@ -1,5 +1,3 @@
-# cranial-check
-
 Cranial Check
 ======
 
