@@ -129,7 +129,7 @@ a {
 	background-color: transparent;
 	border: none;
 	margin-bottom: 12px;
-	outline:none;
+	outline: none;
 	font-family: 'Montserrat', sans-serif;
 }
 
@@ -180,10 +180,9 @@ tr {
 tr:nth-child(odd) {
 	background-color: #E5E5E5;
 }*/
-
 /*----------------------------FILTER------------------------*/
-.filter-items{
-	margin:5px 0 5px 20px;
+.filter-items {
+	margin: 5px 0 5px 20px;
 	max-height: 0;
 	overflow: hidden;
 	transition: 0.5s ease-in-out;
@@ -194,33 +193,42 @@ tr:nth-child(odd) {
 	margin: 0 15px 0 0;
 	padding: 10px;
 	background-color: white;
-	box-shadow:0 2px 4px rgba(0,0,0,0.5);
+
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
-.filter h2{
-	text-align:left;
-	text-transform:uppercase;
-	padding:0 10px 0 0;
-	margin-bottom:20px;
+
+.filter h2 {
+	text-align: left;
+	text-transform: uppercase;
+	padding: 0 10px 0 0;
+	margin-bottom: 20px;
 }
-.filter-name, .active-option{
-	display:inline-block;
-	cursor:pointer;
-	font-weight:400;
+
+.filter-name,
+.active-option {
+	display: inline-block;
+	cursor: pointer;
+	font-weight: 400;
 }
-.active-option, .filter-name:hover{
-	font-weight:700;
-	color:#6792a1;
+
+.active-option,
+.filter-name:hover {
+	font-weight: 700;
+	color: #6792a1;
 }
+
 /*+*/
 .filter-name:after {
 	content: '\002B';
 	float: right;
-	margin-left:10px;
+	margin-left: 10px;
 }
+
 /*-*/
 .active-option:after {
 	content: "\2212";
 }
+
 
 /*----------------------------GLOSSARY------------------------*/
 .glossary {
@@ -243,9 +251,10 @@ tr:nth-child(odd) {
 	font-weight: 400;
 	transition: 0.3s ease-in-out;
 }
-.condition-name:hover{
-	cursor:pointer;
-	background-color:#A4BCC4;
+
+.condition-name:hover {
+	cursor: pointer;
+	background-color: #A4BCC4;
 }
 
 .glossary-content {
