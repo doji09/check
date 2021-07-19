@@ -64,55 +64,55 @@ function check_condition() {
 		for (y in migraine_symptoms) {
 			//if the two symptoms match, it will call the corresponding function with the parameter being the index number that matched
 			if (symptoms_array[x] == migraine_symptoms[y]) {
-				migraine(y);
+				condition(total_migraine_points, y, [5, 4, 3, 2, 1]);
 			}
 		}
 		//sinusitis
 		for (y in sinusitis_symptoms) {
 			if (symptoms_array[x] == sinusitis_symptoms[y]) {
-				sinusitis(y);
+				condition(total_sinus_points, y, [5, 5, 2, 2, 1]);
 			}
 		}
 		//cluster
 		for (y in cluster_symptoms) {
 			if (symptoms_array[x] == cluster_symptoms[y]) {
-				cluster(y);
+				condition(total_cluster_points, y, [4, 4, 3, 3, 1]);
 			}
 		}
 		//tension
 		for (y in tension_symptoms) {
 			if (symptoms_array[x] == tension_symptoms[y]) {
-				tension(y);
+				condition(total_tension_points, y, [5, 4, 4, 1, 1]);
 			}
 		}
 		//eyetrain
 		for (y in eyestrain_symptoms) {
 			if (symptoms_array[x] == eyestrain_symptoms[y]) {
-				eyestrain(y);
+				condition(total_eyestrain_points, y, [4, 3, 3, 3, 2]);
 			}
 		}
 		//hemicrania
 		for (y in hemicrania_symptoms) {
 			if (symptoms_array[x] == hemicrania_symptoms[y]) {
-				hemicrania(y);
+				condition(total_hemicrania_points, y, [5, 5, 2, 2, 1]);
 			}
 		}
 		//traumatic
 		for (y in traumatic_symptoms) {
 			if (symptoms_array[x] == traumatic_symptoms[y]) {
-				traumatic(y);
+				condition(total_traumatic_points, y, [5, 3, 3, 3, 1]);
 			}
 		}
 		//hormone
 		for (y in hormone_symptoms) {
 			if (symptoms_array[x] == hormone_symptoms[y]) {
-				hormone(y);
+				condition(total_hormone_points, y, [5, 4, 3, 2, 1]);
 			}
 		}
 		//rebound
 		for (y in rebound_symptoms) {
 			if (symptoms_array[x] == rebound_symptoms[y]) {
-				rebound(y);
+				condition(total_rebound_points, y, [5, 4, 4, 1, 1]);
 			}
 		}
 	}
@@ -120,59 +120,9 @@ function check_condition() {
 check_condition();
 order_points();
 
-//points are already ordered so the index number of the symptom will be the index number of it's corresponding points --> add the points to total points for that condition 
-function migraine(index) {
-	var migraine_points = [5, 4, 3, 2, 1];
-	total_migraine_points.score += migraine_points[index];
-	//console.log(total_migraine_points.score, "migraine");
-}
-
-function sinusitis(index) {
-	var sinusitis_points = [5, 5, 2, 2, 1];
-	total_sinus_points.score += sinusitis_points[index];
-	//console.log(total_sinus_points.score, "sinus");
-}
-
-function cluster(index) {
-	var cluster_points = [4, 4, 3, 3, 1];
-	total_cluster_points.score += cluster_points[index];
-	//console.log(total_cluster_points.score, "cluster");
-}
-
-function tension(index) {
-	var tension_points = [5, 4, 4, 1, 1];
-	total_tension_points.score += tension_points[index];
-	//console.log(total_tension_points.score, "tension");
-}
-
-function eyestrain(index) {
-	var eyestrain_points = [4, 3, 3, 3, 2];
-	total_eyestrain_points.score += eyestrain_points[index];
-	//console.log(total_eyestrain_points.score, "eyestrain");
-}
-
-function hemicrania(index) {
-	var hemicrania_points = [5, 5, 2, 2, 1];
-	total_hemicrania_points.score += hemicrania_points[index];
-	//console.log(total_hemicrania_points.score, "hemicrania");
-}
-
-function traumatic(index) {
-	var traumatic_points = [5, 3, 3, 3, 1];
-	total_traumatic_points.score += traumatic_points[index];
-	//	console.log(total_traumatic_points.score, "trauma");
-}
-
-function hormone(index) {
-	var hormone_points = [5, 4, 3, 2, 1];
-	total_hormone_points.score += hormone_points[index];
-	//	console.log(total_hormone_points.score, "hormone");
-}
-
-function rebound(index) {
-	var rebound_points = [5, 4, 4, 1, 1];
-	total_rebound_points.score += rebound_points[index];
-	//	console.log(total_rebound_points.score, "rebound");
+//points are already ordered so the index number of the symptom will be the index number of it's corresponding points --> add the points to total points for that condition
+function condition(totalPoints, index, pointsArr) {
+	totalPoints.score += pointsArr[index];
 }
 
 function order_points() {
