@@ -60,61 +60,15 @@ function check_condition() {
 	//loop through each element in the symptoms array (x will be the index number)
 	for (x in symptoms_array) {
 		//for each index number, loop through the condition symptoms (y will be the index number)
-		//migraine
-		for (y in migraine_symptoms) {
-			//if the two symptoms match, it will call the corresponding function with the parameter being the index number that matched
-			if (symptoms_array[x] == migraine_symptoms[y]) {
-				condition(total_migraine_points, y, [5, 4, 3, 2, 1]);
-			}
-		}
-		//sinusitis
-		for (y in sinusitis_symptoms) {
-			if (symptoms_array[x] == sinusitis_symptoms[y]) {
-				condition(total_sinus_points, y, [5, 5, 2, 2, 1]);
-			}
-		}
-		//cluster
-		for (y in cluster_symptoms) {
-			if (symptoms_array[x] == cluster_symptoms[y]) {
-				condition(total_cluster_points, y, [4, 4, 3, 3, 1]);
-			}
-		}
-		//tension
-		for (y in tension_symptoms) {
-			if (symptoms_array[x] == tension_symptoms[y]) {
-				condition(total_tension_points, y, [5, 4, 4, 1, 1]);
-			}
-		}
-		//eyetrain
-		for (y in eyestrain_symptoms) {
-			if (symptoms_array[x] == eyestrain_symptoms[y]) {
-				condition(total_eyestrain_points, y, [4, 3, 3, 3, 2]);
-			}
-		}
-		//hemicrania
-		for (y in hemicrania_symptoms) {
-			if (symptoms_array[x] == hemicrania_symptoms[y]) {
-				condition(total_hemicrania_points, y, [5, 5, 2, 2, 1]);
-			}
-		}
-		//traumatic
-		for (y in traumatic_symptoms) {
-			if (symptoms_array[x] == traumatic_symptoms[y]) {
-				condition(total_traumatic_points, y, [5, 3, 3, 3, 1]);
-			}
-		}
-		//hormone
-		for (y in hormone_symptoms) {
-			if (symptoms_array[x] == hormone_symptoms[y]) {
-				condition(total_hormone_points, y, [5, 4, 3, 2, 1]);
-			}
-		}
-		//rebound
-		for (y in rebound_symptoms) {
-			if (symptoms_array[x] == rebound_symptoms[y]) {
-				condition(total_rebound_points, y, [5, 4, 4, 1, 1]);
-			}
-		}
+		checkCondition(x, migraine_symptoms, total_migraine_points, [5, 4, 3, 2, 1]);
+		checkCondition(x, sinusitis_symptoms, total_sinus_points, [5, 5, 2, 2, 1]);
+		checkCondition(x, cluster_symptoms, total_cluster_points, [4, 4, 3, 3, 1]);
+		checkCondition(x, tension_symptoms, total_tension_points, [5, 4, 4, 1, 1]);
+		checkCondition(x, eyestrain_symptoms, total_eyestrain_points, [4, 3, 3, 3, 2]);
+		checkCondition(x, hemicrania_symptoms, total_hemicrania_points, [5, 5, 2, 2, 1]);
+		checkCondition(x, traumatic_symptoms, total_traumatic_points, [5, 3, 3, 3, 1]);
+		checkCondition(x, hormone_symptoms, total_hormone_points, [5, 4, 3, 2, 1]);
+		checkCondition(x, rebound_symptoms, total_rebound_points, [5, 4, 4, 1, 1]);
 	}
 }
 check_condition();
@@ -125,6 +79,15 @@ function condition(totalPoints, index, pointsArr) {
 	totalPoints.score += pointsArr[index];
 }
 
+function checkCondition(x, symptoms, totalPoints, pointsArr) {
+	for (y in symptoms) {
+		//if the two symptoms match, it will call the corresponding function with the parameter being the index number that matched
+		if (symptoms_array[x] == symptoms[y]) {
+			condition(totalPoints, y, pointsArr);
+		}
+	}
+}
+	
 function order_points() {
 	var points = [total_migraine_points, total_sinus_points, total_cluster_points, total_tension_points, total_eyestrain_points, total_hemicrania_points, total_traumatic_points, total_hormone_points, total_rebound_points];
 
