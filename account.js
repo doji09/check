@@ -1,10 +1,17 @@
 //-------------------------------------------------------------------//
 // logout button //
-function logout() {
-	fetch('/~/spring2021/cranial-check/logout', { method: 'POST' })
-	location.href = '/~/spring2021/cranial-check'
-}
+// function logout() {
+// 	fetch('/~/spring2021/cranial-check/logout', { method: 'POST' })
+// 	location.href = '/~/spring2021/cranial-check'
+// }
 
+async function logout() {
+	const resp = await fetch ('/~/spring2021/cranial-check/logout', { 
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' }
+		})
+	const ans = await resp.json();
+}
 
 //-------------------------------------------------------------------//
 //--------------------------------GLOSSARY---------------------------//
@@ -178,7 +185,6 @@ for (var i = 0; i < conditions_array.length; i++) {
 displayConditions.appendChild(list_c);
 conditionsList[0].style.display = "none";
 
-
 //--------------------------FILTERING-------------------------//
 //-------------------------------------------------------------------//
 //FILTER TOGGLE
@@ -191,15 +197,14 @@ for (var x = 0; x < filter_names.length; x++) {
 		var section = this.nextElementSibling;
 		if (section.style.maxHeight) {
 			section.style.maxHeight = null;
-			restartFilter();
+			//restartFilter();
 		} else {
 			section.style.maxHeight = section.scrollHeight + "px";
 		}
 	});
 }
 
-
-// SEARCH BAR
+// SYMPTOMS SEARCH BAR FILTER
 function searchResults() {
 	let input, filter, table, tr, td, i, txtValue;
 	input = document.getElementById("search-results");
@@ -207,13 +212,11 @@ function searchResults() {
 	table = document.getElementById("past-table");
 	tr = table.getElementsByTagName("tr");
 
-	console.log(tr);
 	for (i = 0; i < tr.length; i++) {
 		td = tr[i].getElementsByTagName("td")[2];
 		if (td) {
 			txtValue = td.textContent || td.innerText;
-			if (txtValue.toUpperCase()
-				.indexOf(filter) > -1) {
+			if (txtValue.toUpperCase().indexOf(filter) > -1) {
 				tr[i].style.display = "";
 				if (input.value.length > 0) {
 					td.style.fontWeight = "700";
@@ -243,7 +246,8 @@ for (var i = 0; i < ageArray.length; i++) {
 		uniqueList.push(ageArray[i]);
 	}
 }
-
+//removing the last element of the age array (most recent age entry, which will not be on the past entries table)
+//uniqueList.pop();
 var ageSection = document.getElementById("age-filter")
 for (var i = 0; i < uniqueList.length; i++) {
 	var ageOption = document.createElement("input");
@@ -281,26 +285,53 @@ for (var i = 0; i < ageButtons.length; i++) {
 			if (age_content) {
 				//getting inner text (age listed in entry)
 				var txtValue = age_content.textContent || age_content.innerText;
-				if (txtValue==value) {
+				if (txtValue == value) {
 					age_row[i].style.display = "";
-					age_content.style.color="#6792a1"; //changing color when filtered
-				} else{
+					age_content.style.color = "#6792a1"; //changing color when filtered
+				} else {
 					age_row[i].style.display = "none";
-					age_content.style.color="#000000";
+					age_content.style.color = "#000000";
 				}
 			}
 		}
-		//console.log(age_row[i].getElementsByTagName("td")[1]);
 	});
 }
 
-//RESULTS
-var result_radios=document.getElementsByClassName("result-radio");
+//RESULTS FILTER
+var result_radios = document.getElementsByClassName("result-radio");
 console.log(result_radios.length);
+for (var i = 0; i < result_radios.length; i++) {
+	result_radios[i].addEventListener("click", function () {
+		var table = document.getElementById("past-table");
+		var row = table.getElementsByTagName("tr"); //array of rows/entries
+		var value=this.value;
+		for(var i=0;i<row.length;i++){
+			//console.log(value);
+			var result_content = row[i].getElementsByTagName("td")[3];
+			//console.log(result_content);
+			if (result_content){
+				var txtValue = result_content.textContent || result_content.innerText;
+				if(txtValue.indexOf(value)>-1){
+					console.log("true");
+					row[i].style.display = "";
+					result_content.style.color="#6792a1";
+				}
+				else{
+					row[i].style.display = "none";
+					result_content.style.color="#000000";
+				}
+			}
+		}
+	});	
+}
+
 
 //DATE FILTER
+var date_radios = document.getElementsByClassName("");
+
+
 //temporary solution to multi-filter --> having disabled buttons
-function restartFilter(){
+/*function restartFilter(){
 	//restarting all filters when they're closed and displaying all the results 
 	var table = document.getElementById("past-table");
 	var rows = table.getElementsByTagName("tr");
@@ -320,6 +351,4 @@ function restartFilter(){
 		radios[i].checked=false;
 	}
 	search.value="";
-}
-//--------------------------FILTERING-------------------------//
-//-------------------------------------------------------------------//
+}*/
