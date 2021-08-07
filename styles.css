@@ -348,6 +348,14 @@ input[type="password"]:focus {
 	padding: 15px;
 	text-transform: uppercase;
 }
+.symptoms-content {
+	padding: 0 18px;
+	max-height: 0;
+	overflow: hidden;
+	width: 100%;
+	transition: max-height 0.5s ease-out;
+	background-color: #f1f1f1;
+}
 
 .symptom-row {
 	width: 100%;
@@ -639,15 +647,35 @@ label {
 	justify-content: center;
 	flex-wrap: wrap;
 }
-
-.symptoms-content {
-	padding: 0 18px;
-	max-height: 0;
-	overflow: hidden;
-	width: 100%;
-	transition: max-height 0.2s ease-out;
-	background-color: #f1f1f1;
+/* ------------------------------------ MENU PAGE ------------------------------------ */
+.menu{
+	text-align:center;
 }
+.menu #logo{
+	width:200px;
+}
+.menu h1{
+	margin:0;
+	font-size:4em;
+	margin-bottom:10px;
+}
+.btn-display{
+	font-family: 'Montserrat', sans-serif;
+	font-size:25px;
+	width:350px;
+	height:60px;
+	margin:10px;
+	border:none;
+	box-shadow:2px 2px 5px rgba(0,0,0,0.4);
+	background-color:#fefefe;
+	transition:0.5s ease-in-out;
+}
+.btn-display:hover{
+	cursor:pointer;
+	background-color: #A4BCC4;
+}
+
+
 
 /* ----------------------------------- MOBILE CSS ----------------------------------- */
 @media only screen and (max-width: 600px) {
@@ -672,4 +700,44 @@ label {
 	.slider {
 		width: 100%;
 	}
+}
+/*menu*/
+.nav {
+	height: 100%;
+	position: fixed;
+	z-index: 10;
+	top: 0;
+	right: 0;
+	background-color: #A4BCC4;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 40px;
+	width: 0;
+}
+#open {
+	position: absolute;
+	font-size: 30px;
+	top: 10px;
+	right: 10px;
+	cursor:pointer;
+}
+.btn {
+	display: block;
+	font-size: 20px;
+	width: 100%;
+	text-align: left;
+	padding: 15px 50px 15px 15px;
+	transition: 0.5s ease-in-out;
+	cursor:pointer;
+}
+
+.btn:hover {
+	background-color: #F4F3F3;
+}
+
+#close {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	font-size: 30px;
 }

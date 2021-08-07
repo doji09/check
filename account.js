@@ -13,12 +13,11 @@ async function logout() {
 	const ans = await resp.json();
 }
 
-//-------------------------------------------------------------------//
 //--------------------------------GLOSSARY---------------------------//
-//-------------------------------------------------------------------//
 var conditionNames = document.getElementsByClassName("condition-name");
 var items = document.getElementsByClassName("glossary-item");
 var conditionContent = document.getElementsByClassName("glossary-content");
+
 // SEARCH BAR GLOSSARY
 function searchGlossary() {
 	var input = document.getElementById("search");
@@ -43,21 +42,7 @@ function searchGlossary() {
 		}
 	}
 }
-//GLOSSARY COLLAPSIBLES
-//loop through the array of collapsibles and give it a function 
-for (var i = 0; i < items.length; i++) {
-	items[i].addEventListener("click", function () {
-		conditionContent = this.children[1];
-		conditionName = this.children[0];
-		if (conditionContent.style.maxHeight) {
-			conditionContent.style.maxHeight = null;
-			conditionName.style.backgroundColor = "#fefefe";
-		} else {
-			conditionContent.style.maxHeight = conditionContent.scrollHeight + "px";
-			conditionName.style.backgroundColor = "#A4BCC4";
-		}
-	});
-}
+
 //------------------------------------------------------//
 //------------------NAV BAR-----------------------------//
 //------------------------------------------------------//

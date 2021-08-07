@@ -1,4 +1,27 @@
 // --------------------------------------------------------------------------------------------- //
+//console.log("test");
+/*function logout() {
+	fetch('/~/spring2021/cranial-check/logout', { method: 'POST' })
+	location.href = '/~/spring2021/cranial-check'
+}*/
+async function logout() {
+	const resp = await fetch ('/~/spring2021/cranial-check/logout', { 
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' }
+		})
+	const ans = await resp.json();
+	//show(ans);
+	console.log(ans);
+}
+
+function openNav() {
+	document.getElementById("nav")
+		.style.width = "250px";
+}
+function closeNav() {
+	document.getElementById("nav")
+		.style.width = "0";
+}
 // ---------------------------------- BUTTONS TO CHANGE PAGES ---------------------------------- //
 // --------------------------------------------------------------------------------------------- //
 
@@ -158,8 +181,7 @@ function activeRow() {
 // --------------------------------------------------------------------------------------------- //
 // date hidden input
 function getDate() {
-	var today = new Date()
-		.toLocaleString();
+	var today = new Date().toLocaleDateString();
 	document.getElementById("date")
 		.value = today;
 }
