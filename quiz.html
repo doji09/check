@@ -4,7 +4,7 @@
 	<head>
 		<!--meta tags-->
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">s
 		<!--styling-->
 		<link rel="stylesheet" href="styles.css">
 		<!--font link-->
@@ -13,6 +13,7 @@
 	</head>
 
 	<body>
+		<a onclick="openNav()" id="open">&#9776;</a>
 		<!--start of giant form-->
 		<form action="/~/spring2021/cranial-check/account/data" method="post">
 			<!--age page-->
@@ -54,16 +55,19 @@
 								<div class="click-area" id="click-nose" onmouseout="nothoverSymptomContent(4)" onmouseover="hoverSymptomContent(4)" onclick="toggleSymptomContent(4)"></div>
 								<div class="click-area" id="click-throat" onmouseout="nothoverSymptomContent(5)" onmouseover="hoverSymptomContent(5)" onclick="toggleSymptomContent(5)"></div>-->
 								<!--temples-->
-								<div class="click-area" id="click-temples" onclick="toggleSymptomContent(0)"></div>
+								<div class="click-area" id="click-temples" onclick="toggleSymptomContent(0)" onmouseover="changeBoxColor(0)" onmouseout="revertBoxColor(0)"></div>
 								<!--sinus-->
-								<div class="click-area" id="click-sinus" onclick="toggleSymptomContent(1)"></div>
+								<div class="click-area" id="click-sinus" onclick="toggleSymptomContent(1)" onmouseover="changeBoxColor(1)" onmouseout="revertBoxColor(1)"></div>
 								<!--forehead-->
-								<div class="click-area" id="click-forehead" onclick="toggleSymptomContent(2)"></div>
-								<!---->
-								<div class="click-area" id="click-eye-1" onclick="toggleSymptomContent(3)"></div>
-								<div class="click-area" id="click-eye-2" onclick="toggleSymptomContent(3)"></div>
-								<div class="click-area" id="click-nose" onclick="toggleSymptomContent(4)"></div>
-								<div class="click-area" id="click-throat" onclick="toggleSymptomContent(5)"></div>
+								<div class="click-area" id="click-forehead" onclick="toggleSymptomContent(2)" onmouseover="changeBoxColor(2)" onmouseout="revertBoxColor(2)"></div>
+								<!--left eye-->
+								<div class="click-area" id="click-eye-1" onclick="toggleSymptomContent(3)" onmouseover="changeBoxColor(3)" onmouseout="revertBoxColor(3)"></div>
+								<!--right eye-->
+								<div class="click-area" id="click-eye-2" onclick="toggleSymptomContent(3)" onmouseover="changeBoxColor(3)" onmouseout="revertBoxColor(3)"></div>
+								<!--nose-->
+								<div class="click-area" id="click-nose" onclick="toggleSymptomContent(4)" onmouseover="changeBoxColor(4)" onmouseout="revertBoxColor(4)"></div>
+								<!--throat-->
+								<div class="click-area" id="click-throat" onclick="toggleSymptomContent(5)" onmouseover="changeBoxColor(5)" onmouseout="revertBoxColor(5)"></div>
 							</div>
 						</div>
 						<!--corresponding symptoms (right column)-->
@@ -185,6 +189,12 @@
 			<!--redirect to results page-->
 			<input type='hidden' name='redirecturl' value='/~/spring2021/cranial-check/results'>
 		</form> <!-- end of giant form -->
+		<div class="nav" id="nav">
+			<a id="close" href="javascript:void(0)" onclick="closeNav()">&times;</a>
+			<a class="btn" onclick='logout()'>Log Out</a>
+			<a class="btn" onclick="window.location.href='/~/spring2021/cranial-check/quiz'">Take Quiz</a>
+			<a class="btn" onclick="window.location.href='/~/spring2021/cranial-check/glossary'">Visit Glossary</a>
+		</div>
 		<script src="script.js"></script>
 	</body>
 

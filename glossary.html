@@ -1,5 +1,36 @@
 <!DOCTYPE html>
 <html>
-	<head></head>
-	<body></body>
+
+	<head>
+		<!--meta tags-->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--styling-->
+		<link rel="stylesheet" href="account.css">
+		<!--font link-->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+		<script src="glossary.js"></script>
+	</head>
+
+	<body>
+		<div class="glossary-container">
+			<div class="about-info">
+				<h1>Condition Glossary</h1>
+			</div>
+			<div class="search">
+				<input id="search" type="text" placeholder="Search for condition..." onkeyup="searchGlossary()">
+				<!--<img src="https://img.icons8.com/android/24/000000/search.png" id="search-icon">-->
+			</div>
+			<!--glossary-->
+			<div id="glossary"></div>
+		</div>
+		<div class="nav" id="nav">
+			<a id="close" href="javascript:void(0)" onclick="closeNav()">&times;</a>
+			<a class="btn" onclick='logout()'>Log Out</a>
+			<a class="btn" onclick="window.location.href='/~/spring2021/cranial-check/quiz'">Take Quiz</a>
+			<a class="btn" onclick="window.location.href='/~/spring2021/cranial-check/glossary'">Visit Glossary</a>
+		</div>
+		<script src="account.js"></script>
+	</body>
 </html>
