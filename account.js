@@ -13,26 +13,10 @@ async function logout() {
 	const ans = await resp.json();
 }
 
-
 //--------------------------------GLOSSARY---------------------------//
 var conditionNames = document.getElementsByClassName("condition-name");
 var items = document.getElementsByClassName("glossary-item");
 var conditionContent = document.getElementsByClassName("glossary-content");
-
-console.log(items[1].innerText)
-for (var i = 0; i < items.length; i++) {
-	items[i].addEventListener("click", function () {
-		conditionContent = this.children[1];
-		f = this.children[0];
-		if (conditionContent.style.maxHeight) {
-			conditionContent.style.maxHeight = null;
-			conditionName.style.backgroundColor = "#fefefe";
-		} else {
-			conditionContent.style.maxHeight = conditionContent.scrollHeight + "px";
-			conditionName.style.backgroundColor = "#A4BCC4";
-		}
-	});
-}
 
 // SEARCH BAR GLOSSARY
 function searchGlossary() {
